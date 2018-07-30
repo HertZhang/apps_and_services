@@ -1,0 +1,21 @@
+#Simple makefile for libusb application
+# this is a proper pound sign! jolly good!
+
+#CC = arm-linux-gnueabihf-gcc
+CC = /home/aplex/sbc7819/toolchain/gcc-linaro-6.3.1-2017.05-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
+
+INC=/usr/local/include/libusb-1.0
+#INC=~/sbc7819/apps_and_services/libusb/libusb-1.0.21/install/lib/include/libusb-1.0
+#LIB=~/sbc7819/apps_and_services/libusb/libusb-1.0.21/install/lib/libusb-1.0.so.0.1.0
+DEPENDENCIES := -lpthread -lrt
+CFLAGS=libusb-1.0.a $(DEPENDENCIES) -Wall -Wextra
+OBJ=USB_Linux_HSET.o
+
+USB_Linux_HSET: $(OBJ)
+	$(CC) $(OBJ) -o USB_Linux_HSET $(CFLAGS)
+
+USB_Linux_HSET.o: USB_Linux_HSET.c
+	$(CC) -c USB_Linux_HSET.c -I$(INC)
+
+clean :
+	-rm *.o $(objects) USB_Linux_HSET

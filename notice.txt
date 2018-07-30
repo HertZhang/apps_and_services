@@ -1,0 +1,6 @@
+useless:
+usb-electrical-test  usb-tools-master	
+
+useful:
+libusb  phytool     usb-test-mod
+
